@@ -1,0 +1,21 @@
+{
+  "name": "cli",
+  "version": "0.0.1",
+  "description": "cli core",
+  "type": "module",
+  "main": "lib/index.ts",
+  "bin": {
+    "emdi": "bin/cli.ts"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.0.0"
+  }
+}
