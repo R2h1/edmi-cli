@@ -2,10 +2,9 @@
   "name": "cli",
   "version": "0.0.1",
   "description": "cli core",
-  "type": "module",
-  "main": "lib/index.ts",
+  "main": "src/index.js",
   "bin": {
-    "emdi": "bin/cli.ts"
+    "edmi": "bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +15,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^11.0.0"
+    "@types/import-local": "^3.1.0",
+    "@types/npmlog": "^4.1.4",
+    "commander": "^11.0.0",
+    "import-local": "^3.1.0",
+    "npmlog": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.4"
   }
 }
