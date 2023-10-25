@@ -1,3 +1,4 @@
-export default function(args: string[]) {
-  console.log('脚手架入口')
+export default function print(args?: string[]) {
+  console.log('入口: ', args);
 }
+print();

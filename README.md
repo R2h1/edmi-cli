@@ -1,2 +1,2 @@
-## edmi-cli
+# edmi-cli
  my own cli tool

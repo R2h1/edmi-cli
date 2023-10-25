@@ -1,10 +1,9 @@
 {
-  "name": "edmi-cli",
+  "name": "@edmi/cli",
   "version": "0.0.1",
   "description": "my own cli tool",
-  "main": "index.js",
+  "private": "true",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "cli",
@@ -14,6 +13,21 @@
   "workspaces": [
     "packages/*"
   ],
+  "devDependencies": {
+    "@types/node": "^20.8.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^5.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "3.0.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.5"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
