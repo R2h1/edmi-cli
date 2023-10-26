@@ -1,6 +1,9 @@
 {
   "files": [],
   "references": [
-    { "path": "packages/cli" }
-  ]
+    { "path": "packages/cli" },
+    { "path": "packages/command" },
+    { "path": "packages/init" },
+    { "path": "packages/utils" },
+  ],
 }

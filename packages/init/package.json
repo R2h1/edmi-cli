@@ -1,0 +1,17 @@
+{
+  "name": "@edmi/init",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --build"
+  },
+  "keywords": [],
+  "author": "zed",
+  "license": "MIT",
+  "dependencies": {
+    "@edmi/command": "^0.0.1",
+    "@edmi/utils": "^1.0.0"
+  }
+}

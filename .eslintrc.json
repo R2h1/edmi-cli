@@ -6,5 +6,9 @@
       "./packages/*/tsconfig.json"
     ]
   },
+  "rules": {
+    "class-methods-use-this": 0,
+    "@typescript-eslint/no-unused-vars": "warn"
+  },
   "ignorePatterns": ["dist", "node_modules"]
 }

@@ -1,1 +1,2 @@
-export default function print(args?: string[]): void;
+declare function main(args: string[]): void;
+export default main;

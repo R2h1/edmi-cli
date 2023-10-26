@@ -1,0 +1,16 @@
+{
+  "name": "@edmi/utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --build"
+  },
+  "keywords": [],
+  "author": "zed",
+  "license": "ISC",
+  "dependencies": {
+    "npmlog": "^7.0.1"
+  }
+}
