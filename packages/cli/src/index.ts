@@ -5,7 +5,7 @@ import createInitCommand from '@edmi/init';
 import { log, isDebug } from '@edmi/utils';
 import { bin, version } from '../package.json';
 
-const LOW_NODE_VERSION = '19.0.0';
+const LOW_NODE_VERSION = '18.0.0';
 
 const checkNodeVersion = () => {
   const { version: nodeVersion } = process;
