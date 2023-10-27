@@ -12,6 +12,6 @@
   "license": "MIT",
   "dependencies": {
     "@edmi/command": "^0.0.1",
-    "@edmi/utils": "^1.0.0"
+    "@edmi/utils": "^0.0.1"
   }
 }
