@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "edmi": "dist/bin/cli.js"
+    "edmi": "dist/bin/index.js"
   },
   "scripts": {
     "dev": "tsnd --respawn --files src/index.ts",
@@ -23,12 +23,11 @@
   "dependencies": {
     "@edmi/init": "^0.0.1",
     "@edmi/utils": "^0.0.1",
-    "chalk": "^5.3.0",
+    "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
     "commander": "^11.0.0",
     "execa": "^8.0.1",
-    "import-local": "^3.1.0",
-    "semver": "^7.5.4"
+    "import-local": "^3.1.0"
   },
   "devDependencies": {
     "@types/import-local": "^3.1.0",

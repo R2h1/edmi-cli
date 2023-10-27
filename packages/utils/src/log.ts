@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import npmlog from 'npmlog';
-import isDebug from './isDebug';
+import { isDebug } from './env';
 
 if (isDebug()) {
   npmlog.level = 'verbose';

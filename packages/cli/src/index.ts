@@ -1,22 +1,6 @@
-import { program } from 'commander';
-import semver from 'semver';
-// import chalk from 'chalk';
 import createInitCommand from '@edmi/init';
 import { log, isDebug } from '@edmi/utils';
-import { bin, version } from '../package.json';
-
-const LOW_NODE_VERSION = '18.0.0';
-
-const checkNodeVersion = () => {
-  const { version: nodeVersion } = process;
-  if (!semver.gte(nodeVersion, LOW_NODE_VERSION)) {
-    throw new Error(`需要安装 ${LOW_NODE_VERSION} 以上版本的 nodejs, 当前版本为 ${nodeVersion}`);
-  }
-};
-
-const preAction = () => {
-  checkNodeVersion();
-};
+import edmiCLI from './cli';
 
 process.on('uncaughtException', (e) => {
   if (isDebug()) {
@@ -28,16 +12,11 @@ process.on('uncaughtException', (e) => {
 });
 
 function main(args: string[]) {
-  program
-    .name(Object.keys(bin)[0])
-    .usage('<command> [options]')
-    .version(version)
-    .option('-d, --debug', '是否开启调试模式', false)
-    .hook('preAction', preAction);
+  const cli = edmiCLI();
 
-  createInitCommand(program);
+  createInitCommand(cli);
 
-  program.parse(process.argv);
+  cli.parse(process.argv);
 }
 
 export default main;

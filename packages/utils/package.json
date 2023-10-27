@@ -11,6 +11,8 @@
   "author": "zed",
   "license": "ISC",
   "dependencies": {
-    "npmlog": "^7.0.1"
+    "chalk": "^4.1.2",
+    "npmlog": "^7.0.1",
+    "semver": "^7.5.4"
   }
 }
