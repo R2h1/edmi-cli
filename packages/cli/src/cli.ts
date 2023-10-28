@@ -1,5 +1,5 @@
-import { checkNodeVersion } from '@edmi/utils';
-import { program } from 'commander';
+import { log, checkNodeVersion } from '@edmi/utils';
+import { program, Command } from 'commander';
 import { bin, version } from '../package.json';
 
 export default function edmiCLI() {
@@ -11,6 +11,12 @@ export default function edmiCLI() {
     .hook('preAction', () => {
       checkNodeVersion();
     });
+
+  program.on('option:debug', () => {
+    if (program.opts().debug) {
+      log.verbose('', 'debug mode opened');
+    }
+  });
 
   return program;
 }
