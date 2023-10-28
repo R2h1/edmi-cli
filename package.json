@@ -3,8 +3,12 @@
   "version": "0.0.1",
   "description": "my own cli tool",
   "private": "true",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/R2h1/edmi-cli.git"
+  },
   "scripts": {
-    "clean": "rimraf ./**/dist/ ./**/tsconfig.tsbuildinfo",
+    "clean": "rimraf ./packages/**/dist/ ./packages/ **/tsconfig.tsbuildinfo",
     "build": "tsc --build"
   },
   "keywords": [

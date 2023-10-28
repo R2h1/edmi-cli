@@ -2,19 +2,19 @@ import CommandBase from '@edmi/command';
 import { log } from '@edmi/utils';
 
 class InitCommand extends CommandBase {
-  get nameAndArgs() {
+  override get nameAndArgs() {
     return 'init [name]';
   }
 
-  get description() {
+  override get description() {
     return 'init project';
   }
 
-  action = ([name, opts]: any[]) => {
+  override action = ([name, opts]: any[]) => {
     log.success('init', name, opts);
   };
 
-  get options() {
+  override get options() {
     return [
       {
         flags: '-f, --force',

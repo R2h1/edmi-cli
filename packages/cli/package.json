@@ -14,7 +14,7 @@
     "build": "tsc --build",
     "dev:w": "run-p dev build:w",
     "lint": "eslint . --ext .js,.ts --fix",
-    "test": "jest"
+    "test": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js"
   },
   "keywords": [
     "cli"

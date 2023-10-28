@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "commonjs",
+    "target": "ES2022",
+    "module": "CommonJS",
     "esModuleInterop": true,
-    "sourceMap": true,
+    "removeComments": true,
+    "sourceMap": false,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
     "newLine": "LF",
+    "declaration": true,
     "noImplicitAny": true,
-    "composite": true
+    "moduleResolution": "nodenext",
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "composite": true,
   },
 }

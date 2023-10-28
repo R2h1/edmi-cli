@@ -1,5 +1,5 @@
 import { log, checkNodeVersion } from '@edmi/utils';
-import { program, Command } from 'commander';
+import { program } from 'commander';
 import { bin, version } from '../package.json';
 
 export default function edmiCLI() {
