@@ -42,7 +42,8 @@ export default async function generateProjectInfo(
     overwrite?: boolean;
   } = {};
 
-  let targetPath = '';
+  let targetPath = getTargetPath(projectName);
+  let templateInfo = TEMPLATE_INFO_LIST.find((item) => item.title === opts.template) as TemplateInfo;
 
   try {
     result = await prompts(
@@ -71,13 +72,16 @@ export default async function generateProjectInfo(
           name: 'overwriteChecker'
         },
         {
-          type: opts.template && TEMPLATE_INFO_LIST.find((item) => item.title === opts.template) ? null : 'select',
+          type: opts.template && templateInfo ? null : 'select',
           name: 'template',
           message: 'Select a template:',
           choices: TEMPLATE_INFO_LIST.map(({ value, title }) => ({
             value,
             title
-          }))
+          })),
+          onState: (state) => {
+            templateInfo = TEMPLATE_INFO_LIST.find((item) => item.value === state.value) as TemplateInfo;
+          }
         }
       ],
       {
@@ -90,7 +94,6 @@ export default async function generateProjectInfo(
     log.error('', err.message);
     process.exit(1);
   }
-  const templateInfo = TEMPLATE_INFO_LIST.find((item) => item.value === result.template) as TemplateInfo;
   return {
     projectName: result.projectName as string,
     overwrite: result.overwrite,
