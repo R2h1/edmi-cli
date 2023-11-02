@@ -44,7 +44,7 @@ class CreateCommand extends CommandBase {
         defaultValue: false
       },
       {
-        flags: '-t, --template',
+        flags: '-tp, --template <template>',
         description: '指定模板名称',
         defaultValue: 'react-vite-typescript-starter'
       }
