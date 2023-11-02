@@ -11,8 +11,12 @@
   "author": "zed",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^4.1.2",
+    "kolorist": "^1.8.0",
     "npmlog": "^7.0.1",
+    "prompts": "^2.4.2",
     "semver": "^7.5.4"
+  },
+  "devDependencies": {
+    "@types/prompts": "^2.4.7"
   }
 }

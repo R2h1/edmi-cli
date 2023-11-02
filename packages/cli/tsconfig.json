@@ -7,7 +7,7 @@
   "include": ["src", "package.json"],
   "exclude": ["dist"],
   "references": [
-    { "path": "../init" },
+    { "path": "../create" },
     { "path": "../utils" }
   ]
 }

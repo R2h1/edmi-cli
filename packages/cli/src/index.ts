@@ -1,11 +1,11 @@
-import createInitCommand from '@edmi/init';
+import createCreateCommand from '@edmi/create';
 import edmiCLI from './cli';
 import './errorListener';
 
 function main(args: string[]) {
   const cli = edmiCLI();
 
-  createInitCommand(cli);
+  createCreateCommand(cli);
 
   cli.parse(process.argv);
 }

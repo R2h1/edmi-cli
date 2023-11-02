@@ -3,7 +3,7 @@
   "references": [
     { "path": "packages/cli" },
     { "path": "packages/command" },
-    { "path": "packages/init" },
+    { "path": "packages/create" },
     { "path": "packages/utils" },
   ],
 }
