@@ -11,22 +11,31 @@ export type TemplateInfo = {
   registry: string;
 };
 
+const defaultProjectName = 'edmi-project';
+
 const TEMPLATE_INFO_LIST = [
   {
-    title: 'vue',
+    title: 'vue-vite-ts',
     value: 'vue-vite-typescript-starter',
     packageName: '@edmi965/vue-vite-typescript-starter',
     registry: 'https://registry.npmjs.org'
   },
   {
-    title: 'react',
+    title: 'react-vite-ts',
     value: 'react-vite-typescript-starter',
     packageName: '@edmi965/react-vite-typescript-starter',
     registry: 'https://registry.npmjs.org'
   }
 ];
 
-export default async function generateProjectInfo(projectName: string, opts: any) {
+export default async function generateProjectInfo(
+  projectName: string,
+  opts: {
+    projectName?: string;
+    force?: boolean;
+    template?: string;
+  }
+) {
   let result: {
     projectName?: string;
     template?: string;
@@ -39,13 +48,12 @@ export default async function generateProjectInfo(projectName: string, opts: any
     result = await prompts(
       [
         {
-          type: 'text',
+          type: projectName ? null : 'text',
           name: 'projectName',
           message: 'Project name:',
-          initial: projectName,
+          initial: defaultProjectName,
           onState: (state) => {
             targetPath = getTargetPath(state.value) || projectName;
-            // console.log(state.value);
           }
         },
         {
@@ -63,7 +71,7 @@ export default async function generateProjectInfo(projectName: string, opts: any
           name: 'overwriteChecker'
         },
         {
-          type: 'select',
+          type: opts.template && TEMPLATE_INFO_LIST.find((item) => item.title === opts.template) ? null : 'select',
           name: 'template',
           message: 'Select a template:',
           choices: TEMPLATE_INFO_LIST.map(({ value, title }) => ({

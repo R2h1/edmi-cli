@@ -40,8 +40,13 @@ class CreateCommand extends CommandBase {
     return [
       {
         flags: '-f, --force',
-        description: '是否强制更新',
+        description: '是否强制覆盖',
         defaultValue: false
+      },
+      {
+        flags: '-t, --template',
+        description: '指定模板名称',
+        defaultValue: 'react-vite-typescript-starter'
       }
     ];
   }
