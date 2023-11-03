@@ -1,7 +1,6 @@
 import prompts from 'prompts';
-import { red } from 'kolorist';
 
-import { log, pathNotExistOrEmptyExceptGit } from '@edmi/utils';
+import { request, log, pathNotExistOrEmptyExceptGit, printError, red } from '@edmi/utils';
 import { getTargetPath } from './path';
 
 export type TemplateInfo = {
@@ -13,20 +12,19 @@ export type TemplateInfo = {
 
 const defaultProjectName = 'edmi-project';
 
-const TEMPLATE_INFO_LIST = [
-  {
-    title: 'vue-vite-ts',
-    value: 'vue-vite-typescript-starter',
-    packageName: '@edmi965/vue-vite-typescript-starter',
-    registry: 'https://registry.npmjs.org'
-  },
-  {
-    title: 'react-vite-ts',
-    value: 'react-vite-typescript-starter',
-    packageName: '@edmi965/react-vite-typescript-starter',
-    registry: 'https://registry.npmjs.org'
+async function fetchTemplates() {
+  try {
+    const data = await request({
+      url: '/api/v1/templates',
+      method: 'GET'
+    });
+    log.verbose('', JSON.stringify(data));
+    return data as unknown as TemplateInfo[];
+  } catch (err: any) {
+    printError(err);
   }
-];
+  return null;
+}
 
 export default async function generateProjectInfo(
   projectName: string,
@@ -42,8 +40,12 @@ export default async function generateProjectInfo(
     overwrite?: boolean;
   } = {};
 
+  const templates = await fetchTemplates();
+  if (!templates) {
+    throw new Error('There are not any templates to be select!');
+  }
   let targetPath = getTargetPath(projectName);
-  let templateInfo = TEMPLATE_INFO_LIST.find((item) => item.title === opts.template) as TemplateInfo;
+  let templateInfo = templates.find((item) => item.title === opts.template) as TemplateInfo;
 
   try {
     result = await prompts(
@@ -75,12 +77,12 @@ export default async function generateProjectInfo(
           type: opts.template && templateInfo ? null : 'select',
           name: 'template',
           message: 'Select a template:',
-          choices: TEMPLATE_INFO_LIST.map(({ value, title }) => ({
+          choices: templates.map(({ value, title }) => ({
             value,
             title
           })),
           onState: (state) => {
-            templateInfo = TEMPLATE_INFO_LIST.find((item) => item.value === state.value) as TemplateInfo;
+            templateInfo = templates.find((item) => item.value === state.value) as TemplateInfo;
           }
         }
       ],
@@ -94,10 +96,11 @@ export default async function generateProjectInfo(
     log.error('', err.message);
     process.exit(1);
   }
-  return {
-    projectName: result.projectName as string,
+  const projectInfo = {
     overwrite: result.overwrite,
     templateInfo,
     targetPath
   };
+  log.verbose('projectInfo', JSON.stringify(projectInfo));
+  return projectInfo;
 }

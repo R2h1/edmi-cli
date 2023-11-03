@@ -18,10 +18,11 @@ export default async function downloadTemplate(options: DownloadOptions) {
       fse.mkdirpSync(CACHE_TEMPLATE_ROOT);
     }
     await execa('npm', ['install', packageName], { cwd: CACHE_TEMPLATE_ROOT });
-    spinner.succeed();
-    log.success('template download successful');
+    spinner.succeed('template download successful\n');
   } catch (err: any) {
     spinner.fail();
     printError(err);
+  } finally {
+    spinner.stop();
   }
 }

@@ -1,5 +1,5 @@
 import CommandBase from '@edmi/command';
-import { log } from '@edmi/utils';
+import { green, log } from '@edmi/utils';
 import generateProjectInfo from './prompts';
 import downloadTemplate from './download';
 import copyTemplate from './copy';
@@ -17,23 +17,23 @@ class CreateCommand extends CommandBase {
 
   override action = async ([projectName, opts]: any[]) => {
     // 1. 用户交互
-    const projectInfo = await generateProjectInfo(projectName, opts);
-    log.verbose('projectInfo', JSON.stringify(projectInfo));
+    const { targetPath, templateInfo, overwrite } = await generateProjectInfo(projectName, opts);
+    log.info(`Creating a project in ${green(targetPath)}.\n`, '');
+    log.info(`Using template: ${green(templateInfo.title)}\n`, '');
     // 2. download 模板
     await downloadTemplate({
-      ...projectInfo.templateInfo
+      ...templateInfo
     });
     // 3. copy 模板
     await copyTemplate({
-      ...projectInfo.templateInfo,
-      projectName: projectInfo.projectName,
-      targetPath: projectInfo.targetPath,
-      overwrite: projectInfo.overwrite
+      ...templateInfo,
+      targetPath,
+      overwrite
     });
     // 4. install 依赖
-    await installDepends(projectInfo.targetPath);
+    await installDepends(targetPath);
     // 5. git init
-    await gitInit(projectInfo.targetPath);
+    await gitInit(targetPath);
   };
 
   override get options() {
