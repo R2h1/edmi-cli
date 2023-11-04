@@ -27,6 +27,7 @@ class CreateCommand extends CommandBase {
     // 3. copy 模板
     await copyTemplate({
       ...templateInfo,
+      projectName,
       targetPath,
       overwrite
     });
