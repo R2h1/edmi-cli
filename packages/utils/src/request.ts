@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { printError } from './log';
 
 const instance = axios.create({
   baseURL: 'http://edmitest.com:7000',
@@ -7,7 +8,15 @@ const instance = axios.create({
 
 instance.interceptors.response.use(
   (response) => response.data,
-  (error) => Promise.reject(error)
+  (error) => {
+    const { status, data } = error.response;
+    printError(error);
+    // eslint-disable-next-line prefer-promise-reject-errors
+    return Promise.reject({
+      status,
+      message: data
+    });
+  }
 );
 
 export default instance;

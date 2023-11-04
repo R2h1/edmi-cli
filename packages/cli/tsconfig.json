@@ -8,6 +8,7 @@
   "exclude": ["dist"],
   "references": [
     { "path": "../create" },
-    { "path": "../utils" }
+    { "path": "../utils" },
+    { "path": "../template" }
   ]
 }

@@ -23,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "@edmi/create": "^0.0.1",
+    "@edmi/template": "^0.0.1",
     "@edmi/utils": "^0.0.1",
     "chokidar": "^3.5.3",
     "commander": "^11.0.0",

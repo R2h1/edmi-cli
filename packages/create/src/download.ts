@@ -6,7 +6,6 @@ import { CACHE_TEMPLATE_ROOT, CACHE_TEMPLATE_ROOT_NODE_MODULES } from './path';
 
 type DownloadOptions = {
   packageName: string;
-  registry: string;
 };
 
 export default async function downloadTemplate(options: DownloadOptions) {

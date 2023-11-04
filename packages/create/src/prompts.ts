@@ -4,10 +4,7 @@ import { request, log, pathNotExistOrEmptyExceptGit, printError, red } from '@ed
 import { getTargetPath } from './path';
 
 export type TemplateInfo = {
-  title: string;
-  value: string;
   packageName: string;
-  registry: string;
 };
 
 const defaultProjectName = 'edmi-project';
@@ -45,7 +42,7 @@ export default async function generateProjectInfo(
     throw new Error('There are not any templates to be select!');
   }
   let targetPath = getTargetPath(projectName);
-  let templateInfo = templates.find((item) => item.title === opts.template) as TemplateInfo;
+  let templateInfo = templates.find((item) => item.packageName === opts.template) as TemplateInfo;
 
   try {
     result = await prompts(
@@ -77,12 +74,12 @@ export default async function generateProjectInfo(
           type: opts.template && templateInfo ? null : 'select',
           name: 'template',
           message: 'Select a template:',
-          choices: templates.map(({ value, title }) => ({
-            value,
-            title
+          choices: templates.map(({ packageName }) => ({
+            title: packageName,
+            value: packageName
           })),
           onState: (state) => {
-            templateInfo = templates.find((item) => item.value === state.value) as TemplateInfo;
+            templateInfo = templates.find((item) => item.packageName === state.value) as TemplateInfo;
           }
         }
       ],

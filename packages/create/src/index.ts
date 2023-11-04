@@ -19,7 +19,7 @@ class CreateCommand extends CommandBase {
     // 1. 用户交互
     const { targetPath, templateInfo, overwrite } = await generateProjectInfo(projectName, opts);
     log.info(`Creating a project in ${green(targetPath)}.\n`, '');
-    log.info(`Using template: ${green(templateInfo.title)}\n`, '');
+    log.info(`Using template: ${green(templateInfo.packageName)}\n`, '');
     // 2. download 模板
     await downloadTemplate({
       ...templateInfo
